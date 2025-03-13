@@ -188,6 +188,20 @@ footer {
   opacity: 0.8;
 }
 
+.report-link {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+
+.report-link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .result-container {
