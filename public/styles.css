@@ -171,6 +171,27 @@ button:hover {
   font-size: 1.25rem;
   border-bottom: 1px solid var(--secondary-color);
   padding-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy-btn {
+  background: transparent;
+  color: var(--secondary-color);
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid var(--secondary-color);
+}
+
+.copy-btn:hover {
+  background-color: var(--secondary-color);
+  color: white;
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .output {

@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const summarizeBtn = document.getElementById('summarizeBtn');
   const clearBtn = document.getElementById('clearBtn');
   const themeToggle = document.getElementById('themeToggle');
+  const copyBtns = document.querySelectorAll('.copy-btn');
   
   const countOutput = document.getElementById('countOutput');
   const humanizeOutput = document.getElementById('humanizeOutput');
@@ -349,4 +350,32 @@ document.addEventListener('DOMContentLoaded', function() {
     void element.offsetWidth; // Force reflow
     element.classList.add('animate-result');
   }
+  
+  // Copy text functionality
+  copyBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const targetId = this.getAttribute('data-target');
+      const targetElement = document.getElementById(targetId);
+      
+      // Get text content without HTML tags
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = targetElement.innerHTML;
+      const textToCopy = tempDiv.textContent || tempDiv.innerText || '';
+      
+      navigator.clipboard.writeText(textToCopy.trim())
+        .then(() => {
+          // Show feedback
+          const originalIcon = this.innerHTML;
+          this.innerHTML = '<i class="fas fa-check"></i>';
+          
+          setTimeout(() => {
+            this.innerHTML = originalIcon;
+          }, 1500);
+        })
+        .catch(err => {
+          console.error('Could not copy text: ', err);
+          alert('Failed to copy text. Please try again.');
+        });
+    });
+  });
 });
